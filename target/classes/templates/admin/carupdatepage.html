@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" th:href="@{/styles/carupdate.css}"/>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car update</title>
+</head>
+<body>
+
+    <header>
+        <div class="main-header-div">
+            <div>
+
+
+            </div>
+
+
+             <div>     
+                <img class="udemx-logo" th:src="@{/udemxlogo.svg}" alt="">
+                <p class="udemx-title">Udemx Car Renting</p>
+            </div>
+            
+
+            <div class="header-right-side">
+                        
+            </div>
+        </div>
+    </header>
+
+        <div class="body-main">
+
+            <div>    </div>
+    
+                <div class="body-middle-side">
+                    <div th:each="car : ${cars}" class="car-main-div">
+                        <form action="/editcarinfo" method="get">
+                        
+
+                        <div class="car-image-div">
+                            <img class="car-image" th:src="'data:image/jpeg;base64,' + ${car.getImageBase64()}" th:alt="${car.title}">
+                        </div>
+
+
+                        <div class="car-middle-div">
+                            <p th:text="${car.title}" class="car-title"></p>
+                            <p th:text="${car.description}" class="car-description"></p>
+                            <div class="car-marketing-div">
+                                <p th:text="${car.gearType}" style="padding-left: 0px;
+                                          padding-top: 10px;
+                                          margin-left: 25px;" class="car-description"></p>
+                                <p style="padding-left: 0px;
+                                padding-top: 0px;
+                                margin-left: 25px;" class="car-description"><span th:text="${car.seats}"></span> ülés</p>
+                            </div>
+                        </div>
+
+
+                        <div class="car-right-div">
+                            <p class="cost-text">Az ár 1 napra:</p>
+                            <p th:text="${car.cost} + ' Ft'" class="cost-number"></p>
+                            <input type="hidden" name="carid" th:value="${car.id}">
+                            <input class="update-button" type="submit" value="Edit">
+
+                        </div>
+                        </form>
+
+                    </div>
+                </div>
+    
+    
+            <div>    </div>
+    
+        </div>
+</body>
+</html>

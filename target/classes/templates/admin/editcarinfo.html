@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" th:href="@{/styles/editcarinfo.css}"/>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+
+    <header>
+        <div class="main-header-div">
+            <div>
+
+
+            </div>
+
+
+             <div>     
+                <img class="udemx-logo" src="/udemxlogo.svg" alt="">
+                <p class="udemx-title">Udemx Car Renting</p>
+            </div>
+            
+
+            <div class="header-right-side">
+                        
+            </div>
+        </div>
+    </header>
+
+        <div class="body-main">
+
+            <div>    </div>
+    
+            <div class="body-middle-main">
+    
+
+    
+    
+                <div class="body-left-side">
+                    <form action="/updatecar" enctype="multipart/form-data" method="post">
+                    <div class="data-request-div">
+
+                        <div class="grey-div">
+                            <p style="padding-left: 0px; font-size: 20px" class="rent-cost-text">Car details</p>
+                        </div>
+
+
+                        <div>
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Title</p>
+                                <input class="data-input" type="text" name="title" th:placeholder="${car.title}">
+                            </div>
+    
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Description</p>
+                                <input class="data-input" type="text" name="description" th:placeholder="${car.description}">
+                            </div>
+    
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Cost</p>
+                                <input class="data-input" type="text" name="cost" th:placeholder="${car.cost}">
+                            </div>
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Gear Type</p>
+                                <input class="data-input" type="text" name="geartype" th:placeholder="${car.gearType}">
+                            </div>
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Seats</p>
+                                <input class="data-input" type="text" name="seats" th:placeholder="${car.seats}">
+                            </div>
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Available</p>
+                                <input class="data-input" type="text" name="available" th:placeholder="${car.available}">
+                            </div>
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Location</p>
+                                <input class="data-input" type="text" name="location" th:placeholder="${car.location}">
+                            </div>
+                            <div class="specific-data-request-div">
+                                <p class="rent-cost-text">Car photo</p>
+                                <input class="data-input" type="file" name="file">
+                            </div>
+                        </div>
+
+                        <div>
+                            <input datatype="number" type="hidden" name="carid" th:value="${car.id}">
+                            <input class="rent-button" type="submit" value="Update">
+                        </div>
+
+
+
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+    
+    
+            <div>    </div>
+    
+        </div>
+</body>
+</html>

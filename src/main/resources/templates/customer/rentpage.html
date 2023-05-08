@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" th:href="@{/styles/rentpage.css}"/>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udemx</title>
+</head>
+<body>
+
+    <header>
+        <div class="main-header-div">
+            <div>
+
+
+            </div>
+
+
+             <div>     
+                <img class="udemx-logo" src="/udemxlogo.svg" alt="">
+                <p class="udemx-title">Udemx Car Renting</p>  
+                
+                <button class="login-button">
+                    <a class="login-a" href="http://127.0.0.1:5500/udemx.html">Login &#9951</a>
+                </button>
+            </div>
+            
+
+            <div class="header-right-side">
+                        
+            </div>
+        </div>
+    </header>
+
+        <div class="body-main">
+
+            <div>    </div>
+    
+            <div class="body-middle-main">
+    
+                <div class="body-top">
+
+                    <div class="previous-page-div">
+                        <a class="previous-page" href="/">&#8592; Vissza a kereséshez</a>
+                    </div>
+
+                    <div class="date-and-place-div">
+                        <p class="date-and-place">IDŐPONT ÉS HELYSZÍN
+                            &#10003;</p>
+                    </div>
+
+                    <div class="date-and-place-div">
+                        <p class="date-and-place">ÁLTALÁNOS ADATOK &#128339;</p>
+                    </div>
+
+                </div>
+    
+    
+                <div class="body-left-side">
+
+                    <div style="vertical-align: top;">
+                        <div class="rent-cost-div">
+                            <p class="rent-cost-text">Autóbérlés díja</p>
+                            <p th:text="${costsum} + ' Ft'" class="rent-cost-number"></p>
+                            <p th:text="'(' + ${days} + ' x ' + ${car.cost} + ' Ft' + ')'" class="pale-text">( 3 x 14679 Ft )</p>
+                        </div>
+
+                        <div class="rent-cost-div">
+                            <p class="rent-cost-text">További szolgáltatások</p>
+                            <p style="padding-bottom: 9px;" class="rent-cost-number">0 Ft</p>
+                        </div>
+
+                        <div class="rent-cost-div">
+                            <div style="padding-top: 1px;">
+                                <p class="black-text">Összesen</p>
+                            </div>
+                            <p th:text="${costsum}" class="rent-cost-number"></p>
+                            <div style="width: 220px;">
+                                <p class="pale-text">*A bérleti díj bármely megadott valutában fizethető</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+
+                <div class="body-right-side">
+
+                    <div class="car-main-div">
+
+                        <div>
+                            <p th:text="${car.title}" class="car-title">City SUV - Renault</p>
+                        </div>
+
+
+                        
+                        <div class="car-main-left-side">
+
+                            <div class="car-image-div">
+                                <img class="car-image" th:src="'data:image/jpeg;base64,' + ${car.getImageBase64()}" alt="">
+                                <div style="display: inline-block;">
+                                    <p class="text-under-car">Klíma</p>
+                                    <p class="text-under-car">Kézi váltó</p>
+                                    <p class="text-under-car">2x Kis bőrönd</p>
+                                </div>
+
+                                <div style="display: inline-block;">
+                                    <p class="text-under-car">1x Nagy bőrönd</p>
+                                    <p class="text-under-car">5x Ajtó</p>
+                                    <p th:text="${car.seats} + 'x személy'" class="text-under-car"></p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="car-main-right-side">
+                            <div>
+                                <p class="rent-cost-text">Foglalás részletei</p>
+                                <hr class="grey-line">
+                            </div>
+
+                            <div>
+                                <p class="rent-cost-text">Felvétel</p>
+                                <p th:text="${dateon}" class="pale-text"></p>
+                                <p class="pale-text">Szeged</p>
+                            </div>
+
+                            <div>
+                                <p class="rent-cost-text" style="padding-top: 0px;">Leadás</p>
+                                <p th:text="${dateoff}" class="pale-text"></p>
+                                <p th:text="${location}" class="pale-text"></p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <!--
+                    Adatbekérés (+ dátumok + carId hidden inputtal)
+                    -->
+
+                    <form action="/insertrent" method="post">
+                        <div class="data-request-div">
+
+                            <div class="grey-div">
+                                <p style="padding-left: 0px; font-size: 20px" class="rent-cost-text">Vezető adatai</p>
+                            </div>
+
+
+                            <div>
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Vezetéknév</p>
+                                    <input class="data-input" type="text" name="secondname" placeholder="Vezetéknév" required>
+                                </div>
+
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Keresztnév</p>
+                                    <input class="data-input" type="text" name="firstname" placeholder="Keresztnév" required>
+                                </div>
+
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">E-mail cím</p>
+                                    <input class="data-input" type="text" name="email" placeholder="E-mail cím" required>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Telefonszám</p>
+                                    <input class="data-input" type="text" name="phonenumber" placeholder="Telefonszám" required>
+                                </div>
+
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Igazolvány típusa</p>
+                                    <select style="width: 210px;" class="data-input" name="idtype" required>
+                                        <option value=""></option>
+                                        <option value="1">Személyi Igazolvány</option>
+                                        <option value="2">Jogosítvány</option>
+                                        <option value="3">Útlevél</option>
+                                    </select>
+                                </div>
+
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Igazolvány száma</p>
+                                    <input class="data-input" type="text" name="idnumber" placeholder="Igazolvány száma" required>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Irányítószám</p>
+                                    <input class="data-input" type="text" name="postalcode" placeholder="Irányítószám" required>
+                                </div>
+
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Város</p>
+                                    <input class="data-input" type="text" name="city" placeholder="Város" required>
+                                </div>
+
+                                <div class="specific-data-request-div">
+                                    <p class="rent-cost-text">Utca / házszám</p>
+                                    <input class="data-input" type="text" name="address" placeholder="Utca / házszám" required>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div>
+                            <input type="hidden" name="carid" th:value="${car.id}">
+                            <input type="hidden" name="dateon" th:value="${dateon}">
+                            <input type="hidden" name="dateoff" th:value="${dateoff}">
+                            <input class="rent-button" type="submit" value="Foglalás">
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+
+            <div>    </div>
+    
+        </div>
+</body>
+</html>

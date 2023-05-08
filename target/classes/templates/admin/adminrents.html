@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" th:href="@{/styles/adminrents.css}"/>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rents</title>
+</head>
+<body>
+
+    <header>
+        <div class="main-header-div">
+            <div>
+
+
+            </div>
+
+
+             <div>     
+                <img class="udemx-logo" src="/udemxlogo.svg" alt="">
+                <p class="udemx-title">Udemx Car Renting</p>
+            </div>
+            
+
+            <div class="header-right-side">
+                        
+            </div>
+        </div>
+    </header>
+
+        <div class="body-main">
+
+            <div>    </div>
+    
+            <div class="body-middle-main">
+    
+
+    
+    
+                <div class="body-left-side">
+
+                    <table class="table">
+                        <tr>
+                            <th class="table-header">Név</th>
+                            <th class="table-header">Email</th>
+                            <th class="table-header">Telefonszám</th>
+                            <th class="table-header">Igazolvány típusa</th>
+                            <th class="table-header">Igazolvány szám</th>
+                            <th class="table-header">Kocsi id</th>
+                            <th class="table-header">Elvitel</th>
+                            <th class="table-header">Visszavitel</th>
+
+
+                        </tr>
+
+                        <tr th:each="rent : ${rents}">
+                            <form action="/deleterent" method="post">
+                                <input type="hidden" name="rentid" th:value="${rent.id}">
+                                <td th:text="${rent.secondName} + ' ' + ${rent.firstName}" class="table-info"></td>
+                                <td th:text="${rent.email}" class="table-info"></td>
+                                <td th:text="${rent.phoneNumber}" class="table-info"></td>
+                                <td th:text="${rent.idType}" class="table-info"></td>
+                                <td th:text="${rent.idNumber}" class="table-info"></td>
+                                <td th:text="${rent.carId}" class="table-info"></td>
+                                <td th:text="${rent.dateOn}" class="table-info"></td>
+                                <td th:text="${rent.dateOff}" class="table-info"></td>
+                                <td th:if="${rentid} == ${rent.id}" th:text="${feedback}"></td>
+                                <td class="table-info">
+                                    <input type="submit" value="Törlés">
+                                </td>
+                            </form>
+                        </tr>
+                        
+                    </table>
+
+
+
+
+
+                </div>
+            </div>
+    
+    
+            <div>    </div>
+    
+        </div>
+</body>
+</html>

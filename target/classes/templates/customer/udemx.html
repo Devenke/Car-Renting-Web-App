@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" th:href="@{/styles/udemx.css}"/>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udemx</title>
+</head>
+<body>
+
+    <header>
+        <div class="main-header-div">
+            <div>
+
+
+            </div>
+
+
+             <div>     
+                <img class="udemx-logo" src="/udemxlogo.svg" alt="">
+                <p class="udemx-title">Udemx Car Renting</p>  
+                
+                <button class="login-button">
+                    <a class="login-a" href="/">Login &#9951</a>
+                </button>
+            </div>
+            
+
+            <div class="header-right-side">
+                        
+            </div>
+        </div>
+    </header>
+    <form action="/search" method="get">
+        <div class="body-main">
+
+            <div>    </div>
+    
+            <div class="body-middle-main">
+
+                <div class="body-top">
+                    <div>
+                        <p class="place-of-takeover-text">Átvételi pont</p>
+                        <select class="place-select" name="location" required>
+                            <option value="">Város</option>
+                            <option value="Szeged">Szeged</option>
+                            <option value="Budapest">Budapest</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <p class="place-of-takeover-text">Átvétel ideje</p>
+                        <input class="place-select" type="date" name="dateon" required>
+                    </div>
+
+                    <div>
+                        <p class="place-of-takeover-text">Visszavétel ideje</p>
+                        <input class="place-select" type="date" name="dateoff" required>
+                    </div>
+
+                    <div>
+                        <input class="search-button" type="submit" value="Keresés">
+                    </div>
+
+
+                </div>
+
+
+                <div class="body-left-side">
+
+                    <div>
+                        <div class="gear-div">
+                            <p class="gear-type">Váltó Típusa</p>
+                            <input type="checkbox"
+                                   name="gear" value="Automatic">
+                                   
+                            <p class="text-automatic" >Automata váltó</p>
+                        </div>
+                        <div>
+                            <input type="checkbox"
+                                   name="gear" value="Manual">
+                                   
+                            <p class="text-automatic" >Manuális váltó</p>
+                        </div>
+                        <div class="gear-div">
+                            <p class="gear-type">Ülések száma</p>
+                            <input class="" type="checkbox"
+                                   name="seats" value="5">
+                                   
+                            <p class="text-automatic" >5 ülés</p>
+                        </div>
+                        <div>
+                            <input class="" type="checkbox"
+                                   name="seats" value="7">
+                                   
+                            <p class="text-automatic" >7 ülés</p>
+                        </div>
+                        <div>
+                            <input class="" type="checkbox"
+                                   name="seats" value="9">
+                                   
+                            <p class="text-automatic" >9 ülés</p>
+                        </div>
+
+                    </div>
+    </form>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+                <div class="body-right-side">
+
+                        <div th:each="car : ${cars}" class="car-main-div">
+                            <form action="/rent" method="get">
+
+                                <input type="hidden" name="carid" th:value="${car.id}">
+                                <input type="hidden" name="dateon" th:value="${dateon}">
+                                <input type="hidden" name="dateoff" th:value="${dateoff}">
+                                <input type="hidden" name="location" th:value="${location}">
+
+                                <div class="car-image-div">
+                                    <img class="car-image" th:src="'data:image/jpeg;base64,' + ${car.getImageBase64()}" th:alt="${car.title}">
+                                </div>
+
+
+                                <div class="car-middle-div">
+                                    <p th:text="${car.title}" class="car-title"></p>
+                                    <p th:text="${car.description}" class="car-description"></p>
+                                    <div class="car-marketing-div">
+                                        <p th:text="${car.gearType}" style="padding-left: 0px;
+                                              padding-top: 10px;
+                                              margin-left: 0px;" class="car-description"></p>
+                                        <p style="padding-left: 0px;
+                                    padding-top: 0px;
+                                    margin-left: 0px;" class="car-description"><span th:text="${car.seats}"></span> ülés</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="car-right-div">
+                                    <p class="cost-text">Az ár 1 napra:</p>
+                                    <p th:text="${car.cost} + ' Ft'" class="cost-number"></p>
+                                    <input th:if="${dateon} != null" type="submit" value="Érdekel" class="red-button">
+                                </div>
+
+                            </form>
+                        </div>
+
+
+
+                </div>
+    
+    
+    
+    
+            </div>
+    
+    
+            <div>    </div>
+    
+        </div>
+</body>
+</html>

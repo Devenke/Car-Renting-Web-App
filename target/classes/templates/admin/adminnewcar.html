@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <link rel="stylesheet" th:href="@{/styles/adminnewcar.css}"/>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Car</title>
+</head>
+<body>
+
+<header>
+    <div class="main-header-div">
+        <div>
+
+
+        </div>
+
+
+        <div>
+            <img class="udemx-logo" src="/udemxlogo.svg" alt="">
+            <p class="udemx-title">Udemx Car Renting</p>
+        </div>
+
+
+        <div class="header-right-side">
+
+        </div>
+    </div>
+</header>
+
+<div class="body-main">
+
+    <div>    </div>
+
+    <div class="body-middle-main">
+
+
+
+
+        <div class="body-left-side">
+            <form action="/insertcar" enctype="multipart/form-data" method="post">
+                <div class="data-request-div">
+
+                    <div class="grey-div">
+                        <p style="padding-left: 0px; font-size: 20px" class="rent-cost-text">Car details</p>
+                    </div>
+
+
+                    <div>
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Title</p>
+                            <input class="data-input" type="text" name="title" placeholder="Title" required>
+                        </div>
+
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Description</p>
+                            <input class="data-input" type="text" name="description" placeholder="Description" required>
+                        </div>
+
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Cost</p>
+                            <input class="data-input" type="text" name="cost" placeholder="Cost" required>
+                        </div>
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Gear Type</p>
+                            <input class="data-input" type="text" name="geartype" placeholder="Automatic / Manual" required>
+                        </div>
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Seats</p>
+                            <input class="data-input" type="text" name="seats" placeholder="5 / 7 / 9" required>
+                        </div>
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Available</p>
+                            <input class="data-input" type="text" name="available" placeholder="t / f" required>
+                        </div>
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Location</p>
+                            <input class="data-input" type="text" name="location" placeholder="Szeged / Budapest" required>
+                        </div>
+                        <div class="specific-data-request-div">
+                            <p class="rent-cost-text">Image</p>
+                            <input class="data-input" type="file" name="file" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input class="rent-button" type="submit" value="Add">
+                    </div>
+
+
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div>    </div>
+
+</div>
+</body>
+</html>
